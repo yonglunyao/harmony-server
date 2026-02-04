@@ -1,0 +1,262 @@
+{
+  "info": {
+    "name": "Harmony Server API",
+    "description": "HarmonyOS File Server API Collection - All POST/GET",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "2.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://47.251.185.82:8877",
+      "type": "string"
+    },
+    {
+      "key": "filePath",
+      "value": "D:\\\\tmp\\\\Git-2.48.1-64-bit.exe",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "File Controller - POST (Modify)",
+      "item": [
+        {
+          "name": "Upload File",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": "{{filePath}}"
+                },
+                {
+                  "key": "category",
+                  "value": "tools",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/file/upload",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "file", "upload"]
+            },
+            "description": "上传文件到服务器"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete File (by filename)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/file/delete/Git-2.48.1-64-bit.exe",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "file", "delete", "Git-2.48.1-64-bit.exe"]
+            },
+            "description": "通过文件名删除文件"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete File by Path (Query)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/file/delete/path?path=Git-2.48.1-64-bit.exe",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "file", "delete", "path"],
+              "query": [
+                {
+                  "key": "path",
+                  "value": "Git-2.48.1-64-bit.exe"
+                }
+              ]
+            },
+            "description": "通过路径参数删除文件"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete File by Path (Body)",
+          "request": {
+            "method": "POST",
+            "header": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"path\": \"Git-2.48.1-64-bit.exe\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/file/delete/path",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "file", "delete", "path"]
+            },
+            "description": "通过请求体删除文件"
+          },
+          "response": []
+        },
+        {
+          "name": "Clean Upload Directory",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/file/clean",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "file", "clean"]
+            },
+            "description": "清空 uploads 目录下的所有文件和子目录（危险操作！）"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "File Controller - GET (Query)",
+      "item": [
+        {
+          "name": "List Files",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/file/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "file", "list"]
+            },
+            "description": "列出上传目录下的所有文件"
+          },
+          "response": []
+        },
+        {
+          "name": "List Files by Path",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/file/list/path?path=.",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "file", "list", "path"],
+              "query": [
+                {
+                  "key": "path",
+                  "value": "."
+                }
+              ]
+            },
+            "description": "按路径查询文件列表（支持相对路径和嵌套目录）"
+          },
+          "response": []
+        },
+        {
+          "name": "Download File (by filename)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/file/download/Git-2.48.1-64-bit.exe",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "file", "download", "Git-2.48.1-64-bit.exe"]
+            },
+            "description": "通过文件名下载文件"
+          },
+          "response": []
+        },
+        {
+          "name": "Download File by Path",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/file/download/path?path=Git-2.48.1-64-bit.exe",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "file", "download", "path"],
+              "query": [
+                {
+                  "key": "path",
+                  "value": "Git-2.48.1-64-bit.exe"
+                }
+              ]
+            },
+            "description": "通过路径参数下载文件"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Data Controller - POST",
+      "item": [
+        {
+          "name": "Report Data",
+          "request": {
+            "method": "POST",
+            "header": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceId\": \"device-001\",\n  \"temperature\": 25.5,\n  \"humidity\": 60,\n  \"location\": {\n    \"lat\": 39.9042,\n    \"lng\": 116.4074\n  },\n  \"timestamp\": 1736012345678\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/data/report",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "data", "report"]
+            },
+            "description": "上报设备数据"
+          },
+          "response": []
+        },
+        {
+          "name": "Report Log",
+          "request": {
+            "method": "POST",
+            "header": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"level\": \"INFO\",\n  \"tag\": \"MainActivity\",\n  \"message\": \"Application started successfully\",\n  \"timestamp\": 1736012345678\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/data/log",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "data", "log"]
+            },
+            "description": "上报日志信息"
+          },
+          "response": []
+        },
+        {
+          "name": "Heartbeat",
+          "request": {
+            "method": "POST",
+            "header": {
+              "Content-Type": "application/json"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceId\": \"device-001\",\n  \"version\": \"1.0.0\",\n  \"timestamp\": 1736012345678\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/data/heartbeat",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "data", "heartbeat"]
+            },
+            "description": "设备心跳检测"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
