@@ -404,7 +404,11 @@ public class FileController {
     }
 
     @GetMapping("/download/path")
-    public ResponseEntity<Resource> downloadByPath(@RequestParam String path) {
+    public ResponseEntity<Resource> downloadByPath(@RequestParam(required = false) String path) {
+        if (path == null || path.isEmpty()) {
+            return ResponseEntity.badRequest().build();
+        }
+
         try {
             Path requestedPath = resolveSafePath(path);
 
