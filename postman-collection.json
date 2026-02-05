@@ -88,9 +88,12 @@
           "name": "Delete File by Path (Body)",
           "request": {
             "method": "POST",
-            "header": {
-              "Content-Type": "application/json"
-            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"path\": \"Git-2.48.1-64-bit.exe\"\n}"
@@ -200,9 +203,12 @@
           "name": "Report Data",
           "request": {
             "method": "POST",
-            "header": {
-              "Content-Type": "application/json"
-            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"deviceId\": \"device-001\",\n  \"temperature\": 25.5,\n  \"humidity\": 60,\n  \"location\": {\n    \"lat\": 39.9042,\n    \"lng\": 116.4074\n  },\n  \"timestamp\": 1736012345678\n}"
@@ -220,9 +226,12 @@
           "name": "Report Log",
           "request": {
             "method": "POST",
-            "header": {
-              "Content-Type": "application/json"
-            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"level\": \"INFO\",\n  \"tag\": \"MainActivity\",\n  \"message\": \"Application started successfully\",\n  \"timestamp\": 1736012345678\n}"
@@ -240,9 +249,12 @@
           "name": "Heartbeat",
           "request": {
             "method": "POST",
-            "header": {
-              "Content-Type": "application/json"
-            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\n  \"deviceId\": \"device-001\",\n  \"version\": \"1.0.0\",\n  \"timestamp\": 1736012345678\n}"
