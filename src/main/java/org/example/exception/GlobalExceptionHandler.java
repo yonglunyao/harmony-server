@@ -104,7 +104,13 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleServerError(Exception e, HttpServletRequest request) {
-        String message = "服务器内部错误: " + e.getMessage();
+        // 获取异常堆栈信息
+        java.io.StringWriter sw = new java.io.StringWriter();
+        java.io.PrintWriter pw = new java.io.PrintWriter(sw);
+        e.printStackTrace(pw);
+        String stackTrace = sw.toString();
+
+        String message = "服务器内部错误: " + e.getMessage() + "\n" + stackTrace;
         log.error("Internal Server Error: {} - {}", request.getRequestURI(), e.getMessage(), e);
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
