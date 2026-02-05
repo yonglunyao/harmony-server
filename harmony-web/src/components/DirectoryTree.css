@@ -1,0 +1,94 @@
+.directory-tree {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.directory-tree h3 {
+  margin: 0 0 15px 0;
+  font-size: 16px;
+}
+
+.path-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.path-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.path-input:focus {
+  outline: none;
+  border-color: #4CAF50;
+}
+
+.btn-secondary {
+  background: #2196F3;
+  color: white;
+  padding: 10px 20px;
+}
+
+.btn-secondary:hover {
+  background: #1976D2;
+}
+
+.path-files h4 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.file-list-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  border-radius: 6px;
+}
+
+.file-list-ul li {
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.file-list-ul li:last-child {
+  border-bottom: none;
+}
+
+.file-list-ul li:hover {
+  background: #f9f9f9;
+}
+
+.dir-item {
+  color: #2196F3;
+  font-weight: 500;
+}
+
+.file-item {
+  color: #333;
+}
+
+.size {
+  margin-left: auto;
+  color: #999;
+  font-size: 12px;
+}
+
+.empty {
+  color: #999;
+  text-align: center;
+  padding: 20px;
+}

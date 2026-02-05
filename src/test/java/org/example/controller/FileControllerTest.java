@@ -401,15 +401,15 @@ class FileControllerTest {
     }
 
     @Test
-    @DisplayName("按路径删除文件 - 尝试删除根目录")
+    @DisplayName("按路径删除文件 - 删除根目录（清空所有文件）")
     void testDeleteByPath_RootDirectory() throws Exception {
         // 获取 uploads 目录的绝对路径
         Path uploadPath = Paths.get(UPLOAD_DIR).toAbsolutePath();
         mockMvc.perform(post("/api/file/delete/path")
                         .param("path", uploadPath.toString()))
-                .andExpect(status().isForbidden())
-                .andExpect(jsonPath("$.success").value(false))
-                .andExpect(jsonPath("$.message").value(containsString("access upload root")));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.type").value("directory"));
     }
 
     @Test
