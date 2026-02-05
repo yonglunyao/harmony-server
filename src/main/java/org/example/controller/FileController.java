@@ -60,11 +60,6 @@ public class FileController {
             throw new SecurityException("Path traversal detected: " + inputPath);
         }
 
-        // 防止访问上传根目录本身（某些操作）
-        if (requestedPath.equals(basePath)) {
-            throw new SecurityException("Cannot access upload root directory directly");
-        }
-
         return requestedPath;
     }
 
