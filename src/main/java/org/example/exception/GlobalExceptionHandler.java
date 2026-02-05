@@ -110,7 +110,7 @@ public class GlobalExceptionHandler {
         e.printStackTrace(pw);
         String stackTrace = sw.toString();
 
-        String message = "服务器内部错误: " + e.getMessage() + "\n" + stackTrace;
+        String message = e.getMessage() + "\n" + stackTrace;
         log.error("Internal Server Error: {} - {}", request.getRequestURI(), e.getMessage(), e);
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
